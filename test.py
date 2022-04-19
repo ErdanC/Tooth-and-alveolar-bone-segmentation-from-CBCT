@@ -23,7 +23,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = FLAGS.gpu
 
 num_classes = 2
 
-with open('/public_bme/data/czm/NC_CBCT/nii/uii/221case/file.list', 'r') as f:
+with open('../file.list', 'r') as f:
     image_list = f.readlines()
 image_list = [item.replace('\n','') for item in image_list]
 
