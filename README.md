@@ -15,7 +15,7 @@ This repository is based on PyTorch 1.4.0.
 2. Run the model: Python test.py.
 
 ### Data
-We will release the partial CBCT data (about 100 scans) with GT annotation.
+We have released the partial CBCT data (about 50 scans) with GT annotation. The link is: https://pan.baidu.com/s/1GabHtrd04g8DiMJwZO2Ksg pw: w1hz
 
 ### Note
 Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please contact Zhiming Cui 'cuizm.neu.edu@gmail.com'. He will run the results within ONE week.
