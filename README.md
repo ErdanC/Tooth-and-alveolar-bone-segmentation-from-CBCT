@@ -14,6 +14,8 @@ This repository is based on PyTorch 1.4.0.
 1. Write the full path of the CBCT data (.nii.gz) in the file.list, and set up in the test.py.
 2. Run the model: Python test.py.
 
+### Data
+We will release the partial CBCT data (about 100 scans) with GT annotation.
 
 ### Note
 Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please contact Zhiming Cui 'cuizm.neu.edu@gmail.com'. He will run the results within ONE week.
