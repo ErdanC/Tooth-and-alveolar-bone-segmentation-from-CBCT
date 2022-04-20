@@ -46,23 +46,27 @@ def tooth_seg(net_seg, image, centroids, patch_size):
     # crop the patch size from original image
     crop_size = patch_size
     image_list, skeleton_list, crop_coord_min_list = [], [], []
-    teeth_ids = centroids.shape[1]
-    for i in range(teeth_ids):
-        tooth_id = i+1
-
-        mean_coord = (centroids[0, i], centroids[1, i], centroids[2, i])
+    teeth_ids = np.unique(multi_skeleton)
+    for i in range(len(teeth_ids)):
+        tooth_id = teeth_ids[i]
+        if tooth_id == 0:
+            continue
+        coord = np.nonzero((multi_skeleton == tooth_id))
+        meanx = int(np.mean(coord[0]))
+        meany = int(np.mean(coord[1]))
+        meanz = int(np.mean(coord[2]))
+        mean_coord = (meanx, meany, meanz)
         # generate the crop coords
         crop_coord_min = mean_coord - crop_size/2
         np.clip(crop_coord_min, (0, 0, 0), image.shape - crop_size, out = crop_coord_min)
         crop_coord_min = crop_coord_min.astype(int)
-
-        crop_cnt = np.zeros((crop_size[0], crop_size[1], crop_size[2]))
-        crop_cnt[mean_coord[0] - crop_coord_min[0], mean_coord[1] - crop_coord_min[1], mean_coord[2] - crop_coord_min[2]] = 1
-        crop_cnt = gaussian_filter(crop_cnt, sigma=5)
-        crop_cnt = (crop_cnt - crop_cnt.min())/(crop_cnt.max() - crop_cnt.min())
-        
+        crop_skeleton = (multi_skeleton[crop_coord_min[0]:(crop_coord_min[0]+crop_size[0]), crop_coord_min[1]:(crop_coord_min[1]+crop_size[1]), crop_coord_min[2]:(crop_coord_min[2]+crop_size[2])] == tooth_id).astype(np.uint8)
+        crop_skeleton = skeletonize_3d(crop_skeleton)
+        crop_skeleton = ndimage.grey_dilation(crop_skeleton, size= (3, 3, 3))
+        crop_skeleton = morphology.remove_small_objects(crop_skeleton.astype(bool), min_size=50, connectivity=1)
+        crop_skeleton = gaussian_filter(crop_skeleton.astype(float), sigma=2)
         image_list.append(image[crop_coord_min[0]:(crop_coord_min[0]+crop_size[0]), crop_coord_min[1]:(crop_coord_min[1]+crop_size[1]), crop_coord_min[2]:(crop_coord_min[2]+crop_size[2])])
-        skeleton_list.append(crop_cnt)
+        skeleton_list.append(crop_skeleton)
         crop_coord_min_list.append(crop_coord_min)
     patches_coord_min = np.asarray(crop_coord_min_list)
     image_patches = np.asarray(image_list)
@@ -71,9 +75,9 @@ def tooth_seg(net_seg, image, centroids, patch_size):
     image_patches = torch.from_numpy(image_patches[:, None, :, :, :]).float().cuda(3)
     skeleton_patches = torch.from_numpy(skeleton_patches[:, None, :, :, :]).float().cuda(3)
     with torch.no_grad():
-        seg_patches_1, bd_patches_1 = net_seg(image_patches[:10, :, :, :, :], skeleton_patches[:10, :, :, :, :])
-        seg_patches_2, bd_patches_2 = net_seg(image_patches[10:20, :, :, :, :], skeleton_patches[10:20, :, :, :, :])
-        seg_patches_3, bd_patches_3 = net_seg(image_patches[20:, :, :, :, :], skeleton_patches[20:, :, :, :, :])
+        seg_patches_1, bd_patches_1, kp_patches_1 = net_seg(image_patches[:10, :, :, :, :], skeleton_patches[:10, :, :, :, :])
+        seg_patches_2, bd_patches_2, kp_patches_2 = net_seg(image_patches[10:20, :, :, :, :], skeleton_patches[10:20, :, :, :, :])
+        seg_patches_3, bd_patches_3, kp_patches_3 = net_seg(image_patches[20:, :, :, :, :], skeleton_patches[20:, :, :, :, :])
         seg_patches = torch.cat((seg_patches_1, seg_patches_2), 0)
         seg_patches = torch.cat((seg_patches, seg_patches_3), 0)
     seg_patches = F.softmax(seg_patches, dim=1)
