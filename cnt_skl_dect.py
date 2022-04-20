@@ -17,8 +17,8 @@ def cen_cluster(seg, off):
     
     #implementation of the paper 'Clustering by fast search and find of density peaks'
     #Args:
-    #bn_seg: predicted binary segmentation results -> (batch_size, 1, 128, 128, 112)
-    #off: predicted offset of x. y, z -> (batch_size, 3, 128, 128, 112)
+    #bn_seg: predicted binary segmentation results -> (batch_size, 1, 128, 128, 128)
+    #off: predicted offset of x. y, z -> (batch_size, 3, 128, 128, 128)
     #Returns:
     #The centroids obtained from the cluster algorithm
     
@@ -61,8 +61,6 @@ def cen_cluster(seg, off):
     cnt_test = np.zeros(voting_map.shape)
     cnt_test[centroids[0, :], centroids[1, :], centroids[2, :]] = 1
     cnt_test = ndimage.grey_dilation(cnt_test, size= (2, 2, 2))
-    print('******test:', cnt_test.shape)
-    #nib.save(nib.Nifti1Image(cnt_test.astype(np.float32), np.eye(4)), "/hpc/data/home/bme/v-cuizm/data/ToothSeg_CBCT/NC_dataset/HZ/0.2_debug/label/cnt_ins.nii.gz")
 
 
     return centroids
@@ -177,27 +175,22 @@ def detect(net_cnt, net_skl, image, stride_xy, stride_z, patch_size):
     #label_map = np.argmax(score_map, axis = 0)
     score_map = (score_map[1, :, :, :] > 0.9).astype(np.float32)
     label_map = score_map
-    #nib.save(nib.Nifti1Image(score_map[:, :, :].astype(np.float32), np.eye(4)), "/hpc/data/home/bme/v-cuizm/project/NC/inference_cnt/test/label_map.nii.gz")
-    
+
     if add_pad:
         label_map = label_map[wl_pad:wl_pad+w,hl_pad:hl_pad+h,dl_pad:dl_pad+d]
         cnt_off = cnt_off[:, wl_pad:wl_pad+w,hl_pad:hl_pad+h,dl_pad:dl_pad+d]
-    #    skl_map = skl_map[wl_pad:wl_pad+w,hl_pad:hl_pad+h,dl_pad:dl_pad+d]
+        skl_map = skl_map[wl_pad:wl_pad+w,hl_pad:hl_pad+h,dl_pad:dl_pad+d]
 
     # centroid clustering
     centroids = cen_cluster(label_map, cnt_off)
     # voxel map to the skeleton
-    #ins_skl_map = map_cntToskl(centroids, label_map, skl_off, cnt_off)
+    ins_skl_map = map_cntToskl(centroids, label_map, skl_off, cnt_off)
 
     
-    return centroids
+    return ins_skl_map
     
     
 def cnt_skl_detection(net_cnt, net_skl, image, stride_xy, stride_z, patch_size):
-    #net_cnt, net_skl = load_model()
-    centroids = detect(net_cnt, net_skl, image, stride_xy, stride_z, patch_size)
-    #print('test 43')
-    #del net_cnt, net_skl
-    #print('test 44')
+    ins_skl_map = detect(net_cnt, net_skl, image, stride_xy, stride_z, patch_size)
     return centroids
     
