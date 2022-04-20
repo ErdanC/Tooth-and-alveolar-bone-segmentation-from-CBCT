@@ -22,7 +22,7 @@ Due to the commercial issue, we cannot release the trained model trained on the 
 
 ### Citation
 
-If the code is useful for your research, please consider citing:
+If the code or data is useful for your research, please consider citing:
 
     @inproceedings{cui2019toothnet,
          title={ToothNet: automatic tooth instance segmentation and identification from cone beam CT images},
