@@ -153,8 +153,8 @@ def inference(image, net_roi, net_cnt, net_skl, ins_net, low_bound, up_bound, w_
     stride_xy = 64
     stride_z = 64
     patch_size_1st_stage = (128, 128, 128)
-    centroids = cnt_skl_detection(net_cnt, net_skl, image[0:w:2, 0:h:2, 0:d:2], stride_xy, stride_z, patch_size_1st_stage)
-    centroids = centroids * 2
+    ins_skl_map = cnt_skl_detection(net_cnt, net_skl, image[0:w:2, 0:h:2, 0:d:2], stride_xy, stride_z, patch_size_1st_stage)
+    ins_skl_map = label_rescale(ins_skl_map, w, h, d, 'nearest')
 
 
     # 2nd stage parameters, the input spacing is 0.2 mm
