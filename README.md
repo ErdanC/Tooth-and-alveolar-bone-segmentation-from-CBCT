@@ -10,6 +10,9 @@ This repository is for our Nature Communications 2022 paper 'A fully automatic A
 ### Installation
 This repository is based on PyTorch 1.4.0.
 
+### Training
+The training and data preparation code will be released within two weeks.
+
 ### Inference
 1. Write the full path of the CBCT data (.nii.gz) in the file.list, and set up in the test.py.
 2. Run the model: Python test.py.
@@ -37,6 +40,16 @@ If the code or data is useful for your research, please consider citing:
          pages={150--162},
          year={2021},
          organization={Springer}} 
+         
+    @article{cui2022fully,
+        title={A fully automatic AI system for tooth and alveolar bone segmentation from cone-beam CT images},
+        author={Cui, Zhiming and Fang, Yu and Mei, Lanzhuju and Zhang, Bojun and Yu, Bo and Liu, Jiameng and Jiang, Caiwen and Sun, Yuhang and Ma, Lei and Huang, Jiawei         and others},
+        journal={Nature Communications},
+        volume={13},
+        number={1},
+        pages={1--11},
+        year={2022},
+        publisher={Nature Publishing Group}}
 
 ### Questions
 Please contact 'cuizm.neu.edu@gmail.com'
