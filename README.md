@@ -43,7 +43,7 @@ If the code or data is useful for your research, please consider citing:
          
     @article{cui2022fully,
         title={A fully automatic AI system for tooth and alveolar bone segmentation from cone-beam CT images},
-        author={Cui, Zhiming and Fang, Yu and Mei, Lanzhuju and Zhang, Bojun and Yu, Bo and Liu, Jiameng and Jiang, Caiwen and Sun, Yuhang and Ma, Lei and Huang, Jiawei         and others},
+        author={Cui, Zhiming and Fang, Yu and Mei, Lanzhuju and Zhang, Bojun and Yu, Bo and Liu, Jiameng and Jiang, Caiwen and Sun, Yuhang and Ma, Lei and Huang, Jiawei and others},
         journal={Nature Communications},
         volume={13},
         number={1},
