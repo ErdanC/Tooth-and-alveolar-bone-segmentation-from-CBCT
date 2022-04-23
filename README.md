@@ -29,7 +29,7 @@ If the code or data is useful for your research, please consider citing:
 
     @inproceedings{cui2019toothnet,
          title={ToothNet: automatic tooth instance segmentation and identification from cone beam CT images},
-         author={Zhiming Cui, Changjian Li, and Wenping Wang},
+         author={Cui, Zhiming and Li, Changjian and Wang, Wenping Wang},
          booktitle = {CVPR},
          year = {2022}}
          
