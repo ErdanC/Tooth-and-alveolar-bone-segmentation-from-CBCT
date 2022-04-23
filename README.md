@@ -31,7 +31,7 @@ If the code or data is useful for your research, please consider citing:
          title={ToothNet: automatic tooth instance segmentation and identification from cone beam CT images},
          author={Cui, Zhiming and Li, Changjian and Wang, Wenping Wang},
          booktitle = {CVPR},
-         year = {2022}}
+         year = {2019}}
          
     @inproceedings{cui2021hierarchical,
          title={Hierarchical Morphology-Guided Tooth Instance Segmentation from CBCT Images},
