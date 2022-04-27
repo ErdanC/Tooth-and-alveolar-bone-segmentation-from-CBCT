@@ -21,7 +21,7 @@ The training and data preparation code will be released within two weeks.
 We have released the partial CBCT data (about 150 scans) with GT annotation. If you want to apply for these data, please complete the registration form in following link (https://drive.google.com/file/d/1mI5GVoT5FDq4uLXfxJmQKwWpMO6J4oUY/view?usp=sharing), and then send to Zhiming Cui ('zmcui94@gmail.com'). He will send you the download link when recieve the data registration form.
 
 ### AI inference application
-Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please complete the AI inference application form in the following link (https://drive.google.com/file/d/1xzFugXfz_coKepT_2PrGH5OwtR6mbUGX/view?usp=sharing), and then send to Zhiming Cui ('zmcui94@gmail.com'). He will send you the data upload link and feedback the results in one week, when recieve the data registration form.
+Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please complete the AI inference application form in the following link (https://drive.google.com/file/d/1xzFugXfz_coKepT_2PrGH5OwtR6mbUGX/view?usp=sharing), and then send to Zhiming Cui ('zmcui94@gmail.com'). He will send you the data upload link and feedback the results in one week, when recieving the application form.
 
 ### Citation
 
