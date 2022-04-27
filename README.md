@@ -52,4 +52,4 @@ If the code or data is useful for your research, please consider citing:
         publisher={Nature Publishing Group}}
 
 ### Questions
-Please contact 'cuizm.neu.edu@gmail.com'
+Please contact zmcui94@gmail.com'.
