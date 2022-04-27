@@ -17,11 +17,11 @@ The training and data preparation code will be released within two weeks.
 1. Write the full path of the CBCT data (.nii.gz) in the file.list, and set up in the test.py.
 2. Run the model: Python test.py.
 
-### Data
-We have released the partial CBCT data (about 50 scans) with GT annotation. The link is: https://pan.baidu.com/s/1GabHtrd04g8DiMJwZO2Ksg pw: w1hz
+### Data registration
+We have released the partial CBCT data (about 150 scans) with GT annotation. If you want to apply for these data, please complete the registration form in following link (https://connecthkuhk-my.sharepoint.com/:b:/g/personal/u3004930_connect_hku_hk/Eabbq1O8Uy9IiqC9CJl6vIoBSbHKaVi___PIaw9qJtyDKQ?e=vq3yEu), and then send to Zhiming Cui ('zmcui94@gmail.com'). He will send you the download link when recieve the data registration form.
 
-### Note
-Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please contact Zhiming Cui 'cuizm.neu.edu@gmail.com'. He will run the results within ONE week.
+### AI inference application
+Due to the commercial issue, we cannot release the trained model trained on the large dataset. If you want to get the results on your own CBCT, please complete the AI inference application form in the following link (https://connecthkuhk-my.sharepoint.com/:b:/g/personal/u3004930_connect_hku_hk/Eabbq1O8Uy9IiqC9CJl6vIoBSbHKaVi___PIaw9qJtyDKQ?e=EgjJFm), and then send to Zhiming Cui ('zmcui94@gmail.com'). He will send you the data upload link and feedback the results in one week, when recieve the data registration form.
 
 ### Citation
 
