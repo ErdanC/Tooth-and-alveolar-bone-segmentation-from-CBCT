@@ -34,6 +34,9 @@ def read_data(data_patch):
     w, h, d = image.shape
     spacing = src_data_vol.header['pixdim'][1:4]
     image = label_rescale(image, w*(spacing[0]/0.2), h*(spacing[0]/0.2), d*(spacing[0]/0.2), 'nearest')
+    if image[image > -1000].mean() < -100:
+        intensity_scale = (-60 + 1000) / (image[image > -1000].mean() + 1000)
+        image = (image + 1000) * intensity_scale - 1000
     image[image < 500] = 500
     image[image > 2500] = 2500
     image = (image - 500)/(2500 - 500)
