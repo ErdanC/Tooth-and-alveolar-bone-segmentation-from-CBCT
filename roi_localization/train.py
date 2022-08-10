@@ -23,8 +23,8 @@ from dataloaders.toothLoader import LAHeart, RandomCrop, CenterCrop, RandomRotFl
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--root_path', type=str, default='../data/2018LA_Seg_Training Set/', help='Name of Experiment')
-parser.add_argument('--exp', type=str,  default='binary_seg_ROI_HZ_02_(1000data_256patchsize_intensityclip)', help='model_name')
+parser.add_argument('--root_path', type=str, default='..', help='Name of Experiment')
+parser.add_argument('--exp', type=str,  default='..', help='model_name')
 parser.add_argument('--max_iterations', type=int,  default=30001, help='maximum epoch number to train')
 parser.add_argument('--batch_size', type=int, default=1, help='batch_size per gpu')
 parser.add_argument('--base_lr', type=float,  default=0.01, help='maximum epoch number to train')
