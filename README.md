@@ -11,7 +11,7 @@ This repository is for our Nature Communications 2022 paper 'A fully automatic A
 This repository is based on PyTorch 1.4.0.
 
 ### Training
-The training and data preparation code will be released within two weeks.
+The training and data preparation codes of the first and second stages have been released.
 
 ### Inference
 1. Write the full path of the CBCT data (.nii.gz) in the file.list, and set up in the test.py.
